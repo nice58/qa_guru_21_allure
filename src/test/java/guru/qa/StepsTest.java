@@ -1,30 +1,22 @@
 package guru.qa;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-public class StepsTest{
+public class StepsTest extends TestBase{
 
-    private static final String NAME_REPOSITORY = "selenide/selenide";
-    private static final int NUMBER_ISSUE = 2434;
+    private static final String NAME_REPOSITORY = "qa-guru/qa_guru_14_10";
+    private static final int NUMBER_ISSUE = 2;
 
     @Test
     @DisplayName("Лямбда шаги через step")
     public void testLambdaStep(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
-        step("Открытие главной страницы", () -> {
-            open("https://github.com");
-        });
 
         step("Поиск репозитория" + NAME_REPOSITORY, () -> {
             $(".search-input").click();
@@ -47,10 +39,8 @@ public class StepsTest{
     @Test
     @DisplayName("Шаги с аннотацией @Step")
     public void testAnnotatedStep() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         WebStepsTest steps = new WebStepsTest();
 
-        steps.openMainPage();
         steps.searchForRepository(NAME_REPOSITORY);
         steps.clickOnRepositoryLink(NAME_REPOSITORY);
         steps.openIssuesTab();

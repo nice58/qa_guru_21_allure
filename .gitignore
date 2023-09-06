@@ -5,9 +5,11 @@ build/
 !**/src/test/**/build/
 gradlew.bat
 settings.gradle
+.idea
+
 
 ### IntelliJ IDEA ###
-.idea
+
 *.iws
 *.iml
 *.ipr

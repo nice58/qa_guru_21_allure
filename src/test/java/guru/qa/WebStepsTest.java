@@ -6,15 +6,9 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 
 public class WebStepsTest {
-
-    @Step("Открытие главной страницы")
-    public void openMainPage(){
-        open("https://github.com");
-    }
 
     @Step("Поиск репозитория {repo}")
     public void searchForRepository(String repo){
